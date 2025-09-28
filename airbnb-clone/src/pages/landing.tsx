@@ -1,6 +1,7 @@
 import NavBar from "../components/navbar";
 import SearchBar from "../components/searchBar";
 import DestinationCard from "../components/destination";
+import Button from "../components/button";
 
 import bg from "../assets/Big Card.png";
 import nashville from "../assets/nashville.png";
@@ -8,14 +9,15 @@ import south_haven from "../assets/south_haven.png";
 import stanton from "../assets/stanton.png";
 import berries from "../assets/unsplash_JYTWsPsIDcY.png";
 import trip from "../assets/unsplash_qvO4yjZo-Mc.png";
-import Button from "../components/button";
+import giftCards from "../assets/Gift Cards.png"
+
 const Landing = () => {
   return (
     <div className="font-poppins">
       {/* hero section UI */}
       <section className="w-full h-[100vh] bg-black px-20 py-4 flex flex-col">
         <div className="">
-          <NavBar />
+          <NavBar isListing={false} isSearch={false}/>
         </div>
         <div className="self-center w-fit mt-8">
           <SearchBar />
@@ -61,7 +63,7 @@ const Landing = () => {
         </div>
       </section>
 
-      <section className="my-16 px-20 py-4">
+      <section className="my-16 px-20 py-4 h-[80vh]">
         <h1 className="text-3xl">Discover Airbnb Experiences</h1>
         <div className="relative flex flex-row justify-between mt-4">
           <span className="relative w-full">
@@ -81,11 +83,12 @@ const Landing = () => {
         </div>
       </section>
 
-      <section>
-        <div>
-            <h1>Shop AirBnB gitf cards</h1>
-
+      <section className="my-16 px-20 py-4 flex justify-between items-center">
+        <div className="flex flex-col space-y-8 items-start">
+            <h1 className="text-4xl">Shop AirBnB <br />gift cards</h1>
+            <Button name="Learn more" isAlt={true}/>
         </div>
+        <img src={giftCards} alt="" />
       </section>
     </div>
   );
