@@ -17,4 +17,4 @@ Where to Collaborate?
 Dedicated Discord Channel: #ProDevProjectNexus
 Connect with both Frontend and Backend learners.
 Use the channel to exchange ideas, ask/answer questions, and stay updated with announcements from the staff.
-💡 ProDev Tip! - Use the first week to communicate your chosen project. - Identify ProDev Backend learners working on the same project to collaborate effectively.
+💡 ProDev Tip! - Use the first week to communicate your chosen project. - Identify ProDev Backend learners working on the same project to collaborate effectively. 
