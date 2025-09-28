@@ -1,6 +1,12 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
+import { setProperties } from "../redux/slices/listingsSlice";
+import { mockProperties } from "../data/mockData";
 import NavBar from "../components/navbar";
 import SearchBar from "../components/searchBar";
 import DestinationCard from "../components/destination";
+import PropertyCard from "../components/PropertyCard";
 import Button from "../components/button";
 
 import bg from "../assets/Big Card.png";
@@ -9,17 +15,25 @@ import south_haven from "../assets/south_haven.png";
 import stanton from "../assets/stanton.png";
 import berries from "../assets/unsplash_JYTWsPsIDcY.png";
 import trip from "../assets/unsplash_qvO4yjZo-Mc.png";
-import giftCards from "../assets/Gift Cards.png"
+import woman from "../assets/woman.png";
 
 const Landing = () => {
+  const dispatch = useDispatch();
+  const { properties } = useSelector((state: RootState) => state.listings);
+
+  useEffect(() => {
+    // Load mock data
+    dispatch(setProperties(mockProperties));
+  }, [dispatch]);
+
   return (
     <div className="font-poppins">
       {/* hero section UI */}
       <section className="w-full h-[100vh] bg-black px-20 py-4 flex flex-col">
         <div className="">
-          <NavBar isListing={false} isSearch={false}/>
+          <NavBar isListing={false} isSearch={false} />
         </div>
-        <div className="self-center w-fit mt-8">
+        <div className="self-center w-fit">
           <SearchBar />
         </div>
         <div className="relative my-4">
@@ -63,32 +77,52 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Featured Properties */}
+      <section className="my-16 px-20 py-4">
+        <h1 className="text-3xl mb-8">Featured properties</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {properties.slice(0, 4).map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
+      </section>
+
       <section className="my-16 px-20 py-4 h-[80vh]">
         <h1 className="text-3xl">Discover Airbnb Experiences</h1>
         <div className="relative flex flex-row justify-between mt-4">
           <span className="relative w-full">
             <span className="absolute top-16 left-16 text-white z-20 flex flex-col items-start space-y-8 m-8">
-              <h1 className="text-5xl">Things to do <br/> on your trip</h1>
-              <Button name="Experiences" isAlt={false}/>
+              <h1 className="text-5xl">
+                Things to do <br /> on your trip
+              </h1>
+              <Button name="Experiences" isAlt={false} />
             </span>
             <img src={trip} className="bg-cover absolute top-0 left-0 z-10" />
           </span>
           <span className="relative w-full">
             <span className="absolute top-16 left-16 text-white z-20 flex flex-col items-start space-y-8 m-8">
-              <h1 className="text-5xl">Things to do <br/> on from home</h1>
-              <Button name="Online Experiences" isAlt={false}/>
+              <h1 className="text-5xl">
+                Things to do <br /> on from home
+              </h1>
+              <Button name="Online Experiences" isAlt={false} />
             </span>
-            <img src={berries} className="bg-cover absolute top-0 left-0 z-10" />
+            <img
+              src={berries}
+              className="bg-cover absolute top-0 left-0 z-10"
+            />
           </span>
         </div>
       </section>
 
-      <section className="my-16 px-20 py-4 flex justify-between items-center">
-        <div className="flex flex-col space-y-8 items-start">
-            <h1 className="text-4xl">Shop AirBnB <br />gift cards</h1>
-            <Button name="Learn more" isAlt={true}/>
-        </div>
-        <img src={giftCards} alt="" />
+      <section className="relative my-16 px-20 py-4 flex justify-between items-center">
+        <img src={woman} className="relative top-0 left-0 z-0" />
+        <span className="absolute top-16 left-20 ml-20 z-10  flex flex-col space-y-20 items-start">
+          <h1 className="text-white text-6xl">
+            Questions <br />
+            about <br /> hosting?
+          </h1>
+          <Button name="Online Experiences" isAlt={false} />
+        </span>
       </section>
     </div>
   );

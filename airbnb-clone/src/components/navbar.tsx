@@ -1,25 +1,35 @@
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../redux/store";
+import { clearUser } from "../redux/slices/userSlice";
 import type { NavProps } from "../types/componentTypes";
 //image imports
 import logo_white from "../assets/icons/Logo_white.svg";
 import logo_red from "../assets/icons/Logo_red.svg";
-import globe from "../assets/icons/globe.svg";
-import menu from "../assets/icons/menu.svg";
-import avatar from "../assets/icons/Avatar.svg";
 import search from "../assets/icons/search.svg";
 
 const NavBar = ({ isListing, isSearch }: NavProps) => {
+  const dispatch = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { currentUser, isAuthenticated } = useSelector((state: RootState) => state.user);
+
+  const handleLogout = () => {
+    dispatch(clearUser());
+  };
+
   return (
     <div
       className={`flex justify-between ${
         !(isSearch || isListing) ? "text-white" : "text-black"
       } font-poppins items-center`}
     >
-      {!(isSearch || isListing) ? (
-        <img src={logo_white} alt="logo" />
-      ) : (
-        <img src={logo_red} alt="logo" />
-      )}
+      <Link to="/">
+        {!(isSearch || isListing) ? (
+          <img src={logo_white} alt="logo" />
+        ) : (
+          <img src={logo_red} alt="logo" />
+        )}
+      </Link>
       {isSearch && (
         <div className="flex items-center pl-3 py-2 pr-1 rounded-full shadow-md bg-white">
           <p className="border-r-2 border-grey-200 px-4">Bordeaux</p>
@@ -30,7 +40,6 @@ const NavBar = ({ isListing, isSearch }: NavProps) => {
           </span>
         </div>
       )}
-      {isListing && <div></div>}
       {!(isSearch || isListing) && (
         <div className="flex space-x-8">
           <p className="hover:border-b-2 px-0 hover:px-2 duration-300 ease-in-out">
@@ -46,19 +55,41 @@ const NavBar = ({ isListing, isSearch }: NavProps) => {
       )}
       <div className="flex space-x-4 items-center">
         <p className="hover:text-grey-300">
-          <Link to={"/"}>Become a Host</Link>
+          <Link to="/host-dashboard">Become a Host</Link>
         </p>
-        <button className="cursor-pointer">
-          <img src={globe} />
-        </button>
-        <span className="flex space-x-1 bg-grey-200 px-2 rounded-2xl justify-between hover:bg-grey-300">
-          <button className="cursor-pointer">
-            <img src={menu} alt="" />
-          </button>
-          <button className="cursor-pointer">
-            <img src={avatar} alt="" />
-          </button>
-        </span>
+        
+        {isAuthenticated ? (
+          <div className="flex items-center space-x-2">
+            <Link 
+              to="/my-bookings"
+              className=" hover:text-grey-300"
+            >
+              My Bookings
+            </Link>
+  
+            <button 
+              onClick={handleLogout}
+              className="text-sm text-white px-4 py-2 rounded-2xl hover:bg-primary-100 bg-primary-200"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex space-x-2">
+            <Link 
+              to="/login" 
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
+            >
+              Log in
+            </Link>
+            <Link 
+              to="/signup" 
+              className="px-4 py-2 text-sm font-medium text-white bg-primary-100 rounded-full hover:bg-red-600"
+            >
+              Sign up
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
