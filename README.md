@@ -1,20 +1,58 @@
-# -alx-project-nexus
-This Project is a GitHub repository dedicated to documenting major learnings from the ProDev Frontend Engineering program. This repository serves as a knowledge hub, showcasing understanding of frontend engineering concepts, tools, and best practices acquired throughout the program.
+# alx-project-nexus
+Scaffolding of Kowanaso
+###Project Description
+This is a Next.js-based project designed to teach the fundamentals of building modern web applications using React, TypeScript, and Next.js. The application has core features of property booking UI, including property listings with images, ratings, and interactive components, while emphasizing best practices in front-end development.
 
-Project Objective
-The objective of this project is to: - Consolidate key learnings from the ProDev Frontend Engineering program. - Document major frontend technologies, concepts, challenges, and solutions. - Serve as a reference guide for both current and future learners. - Foster collaboration between frontend and backend learners.
+### Project Objectives
+The project seeks to address the following
+1. Implement a Next.js project with TypeScript
+2. Implement basic routing in Next.js (Pages Router)
+3. Create reusable React components with TypeScript
+4. Work with TypeScript interfaces for component props
+5. Manage assets and static files in Next.js
+6. Develop an understanding of component composition
+7. Implement responsive design with Tailwind CSS
+8. Set up and configure ESLint for code quality
 
-Key Features
-Comprehensive Documentation: Covers frontend engineering concepts such as Next.js, TailwindCSS, TypeScript, GraphQL, API Integration, and System Design.
-Challenges & Solutions: Includes real-world challenges faced and implemented solutions.
-Best Practices & Takeaways: Highlights industry best practices and personal insights.
-Collaboration Hub: Encourages teamwork between frontend and backend learners.
-Collaboration - Key for Success
-Collaborate with Whom?
-Fellow ProDev Frontend Learners: Exchange ideas, develop synergies, organize study/coding sessions. Maximize your potential and that of your colleagues!
-ProDev Backend Learners: Collaboration with backend learners is essential, as you will use their endpoints to complete your project.
-Where to Collaborate?
-Dedicated Discord Channel: #ProDevProjectNexus
-Connect with both Frontend and Backend learners.
-Use the channel to exchange ideas, ask/answer questions, and stay updated with announcements from the staff.
-💡 ProDev Tip! - Use the first week to communicate your chosen project. - Identify ProDev Backend learners working on the same project to collaborate effectively. 
+### Requirements
+Node.js (v16 or later)
+npm or yarn
+Visual Studio Code (or any preferred IDE)
+Next.js v13+
+TypeScript
+Tailwind CSS
+ESLint
+Vercel
+Github
+Figma
+React
+
+### Project Structure:
+
+1. Components are organized in a dedicated components directory
+TypeScript interfaces are centralized in an interfaces directory
+Pages follow Next.js convention in the pages directory
+Component Design:
+
+2. Components are typed with TypeScript interfaces
+Reusable components accept props for customization
+Components are modular and focused on single responsibilities
+Code Quality:
+
+3. ESLint is configured for code consistency
+TypeScript provides type safety
+Arrow function syntax is used consistently
+Styling:
+
+4. Tailwind CSS is used for utility-first styling
+Responsive design principles are applied
+Consistent spacing and typography scales
+Performance:
+
+5. Next.js Image component is used for optimized images
+Code splitting is handled automatically by Next.js
+Only necessary dependencies are included
+
+6. Figma used to develop the prototype.
+7. Vercel used to deploy the webapp
+
